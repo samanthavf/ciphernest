@@ -1,4 +1,4 @@
-package Groups.Message_encoder.controller;
+package Groups.Message_encoder.service;
 
 import org.springframework.stereotype.Service;
 
