@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class EncoderService {
+public class EncoderServiceBase64 {
 
 	public String toBase64(String txt) {
 		Base64.Encoder encoder = Base64.getEncoder();

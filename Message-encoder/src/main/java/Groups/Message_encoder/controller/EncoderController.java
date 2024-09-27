@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Groups.Message_encoder.service.EncoderService;
+import Groups.Message_encoder.service.EncoderServiceBase64;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/translate")
 public class EncoderController {
-	private final EncoderService service;
+	private final EncoderServiceBase64 service;
 	
 	@PostMapping("/encodeBase64")
 	public ResponseEntity<String> encodeBase64(@RequestBody String text) {
