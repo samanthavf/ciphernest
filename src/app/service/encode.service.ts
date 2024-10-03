@@ -24,8 +24,7 @@ import { json } from "stream/consumers";
         return this.http.post<string>(this.enBase, payload, { responseType: 'text' as 'json' })
     }
     senDecBase(txt:string):Observable<string>{
-        const payload = { message: txt };
-        return this.http.post<string>(this.deBase, payload, { responseType: 'text' as 'json' })
+        return this.http.post<string>(this.deBase, txt, { responseType: 'text' as 'json', headers: {'Content-Type':'text/plain'} })
     }
 
     sendMorse(txt:string):Observable<string>{
@@ -33,8 +32,7 @@ import { json } from "stream/consumers";
         return this.http.post<string>(this.enMorse, payload, { responseType: 'text' as 'json' })
     }
     sendDecMorse(txt:string):Observable<string>{
-        const payload = { message: txt };
-        return this.http.post<string>(this.deMorse, payload, { responseType: 'text' as 'json' })
+        return this.http.post<string>(this.deMorse, txt, { responseType: 'text' as 'json' , headers: {'Content-Type':'text/plain'}})
     }
 
     sendBinary(txt:string):Observable<string>{
@@ -42,7 +40,6 @@ import { json } from "stream/consumers";
         return this.http.post<string>(this.enBinary , payload, { responseType: 'text' as 'json' })
     }
     sendDecBinary(txt:string):Observable<string>{
-        const payload = { message: txt };
-        return this.http.post<string>(this.deBinary, payload, { responseType: 'txt' as 'json' })
+        return this.http.post<string>(this.deBinary, txt, { responseType: 'txt' as 'json' , headers: {'Content-Type':'text/plain'}})
     }
 }
