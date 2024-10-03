@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { json } from "stream/consumers";
 
 @Injectable({
     providedIn: 'root'
@@ -19,23 +20,29 @@ import { Observable } from "rxjs";
     private deBinary:string='http://localhost:8080/api/translate/decodeBinary'
 
     sendBase(txt:string):Observable<string>{
-        return this.http.post<string>(this.enBase, txt)
+        const payload = { message: txt };
+        return this.http.post<string>(this.enBase, payload, { responseType: 'text' as 'json' })
     }
     senDecBase(txt:string):Observable<string>{
-        return this.http.post<string>(this.deBase, txt)
+        const payload = { message: txt };
+        return this.http.post<string>(this.deBase, payload, { responseType: 'text' as 'json' })
     }
 
     sendMorse(txt:string):Observable<string>{
-        return this.http.post<string>(this.enMorse, txt)
+        const payload = { message: txt };
+        return this.http.post<string>(this.enMorse, payload, { responseType: 'text' as 'json' })
     }
     sendDecMorse(txt:string):Observable<string>{
-        return this.http.post<string>(this.deMorse, txt)
+        const payload = { message: txt };
+        return this.http.post<string>(this.deMorse, payload, { responseType: 'text' as 'json' })
     }
 
     sendBinary(txt:string):Observable<string>{
-        return this.http.post<string>(this.enBinary, txt)
+        const payload = { message: txt };
+        return this.http.post<string>(this.enBinary , payload, { responseType: 'text' as 'json' })
     }
     sendDecBinary(txt:string):Observable<string>{
-        return this.http.post<string>(this.deBinary, txt)
+        const payload = { message: txt };
+        return this.http.post<string>(this.deBinary, payload, { responseType: 'txt' as 'json' })
     }
 }

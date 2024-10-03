@@ -87,6 +87,10 @@ overflow-y: scroll;
     color: white;
     cursor: pointer;
 }
+.connected-buttons {
+    position: relative;
+    width: 200px; 
+}
 
 .left-btn {
     border-radius: 3px 0 0 3px; 
@@ -102,12 +106,7 @@ overflow-y: scroll;
     box-shadow: 0 0 15px rgba(47, 123, 255, 0.8);
 }
 
-.left-btn:active, .right-btn:active, 
-.left-btn:focus, .right-btn:focus {
-    background-color: #2f7bff; 
-    border-color: #2f7bff;
-    outline: none; 
-}
+
 
 #select-code{
     position: absolute;
