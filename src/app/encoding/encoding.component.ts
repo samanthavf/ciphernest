@@ -35,8 +35,6 @@ send(){
  if (this.selectedCodeType) {
   if (this.encodeButton()) {
     this.encode()
-    const areaDeTexto = this.el.nativeElement.querySelector('#text-message'); 
-    areaDeTexto.value = ''; 
   }else if (this.decodeButton()) {
     this.decode() 
   }else{
@@ -62,7 +60,10 @@ encode(){
         {
           next: (response) =>{
             console.log('Binary sent successfully', response),
-            this.texto.text = response.text;
+            this.texto.textToSend = response.text;
+
+          const areaDeTexto = this.el.nativeElement.querySelector('#text-message');
+          areaDeTexto.value = ''; 
           },
           error: (error) => {
             console.error('Error sending binary', error);
@@ -73,7 +74,10 @@ encode(){
       this.servico.sendBase(this.texto).subscribe(
         {
           next: (response) =>{ console.log('Base64 sent successfully', response)
-          this.texto.text = response.text;
+          this.texto.textToSend = response.text;
+
+          const areaDeTexto = this.el.nativeElement.querySelector('#text-message');
+          areaDeTexto.value = ''; 
         },
           error: (error) => {
             console.log('Error sending Base64', error);
@@ -84,7 +88,10 @@ encode(){
       case"Morse":
       this.servico.sendMorse(this.texto).subscribe({
         next: (response) => {console.log('Morse sent successfully', response)
-        this.texto.text = response.text;
+        this.texto.textToSend = response.text;
+
+        const areaDeTexto = this.el.nativeElement.querySelector('#text-message');
+        areaDeTexto.value = ''; 
       },
         error: (error) =>
         {
@@ -109,7 +116,10 @@ decode(){
       this.servico.sendDecBinary(this.texto).subscribe({
         next: (response) => {
           console.log('Binary to Text successfully', response)
-          this.texto.text = response.text;
+          this.texto.textToSend = response.text;
+
+          const areaDeTexto = this.el.nativeElement.querySelector('#text-message');
+          areaDeTexto.value = '';
       },
         error: (error) => {
         console.error('Error sending text', error);
@@ -120,7 +130,10 @@ decode(){
       this.servico.sendDecBinary(this.texto).subscribe({
         next: (response) => {
           console.log('Base64 to Text successfully', response)
-          this.texto.text = response.text;
+          this.texto.textToSend = response.text;
+
+          const areaDeTexto = this.el.nativeElement.querySelector('#text-message');
+          areaDeTexto.value = '';
         },
           error: (error) => {
             console.error('Error sending text', error);
@@ -132,7 +145,10 @@ decode(){
     this.servico.sendDecMorse(this.texto).subscribe({
       next: (response) => {
         console.log('Morse to Text successfully', response)
-        this.texto.text = response.text;
+        this.texto.textToSend = response.text;
+
+        const areaDeTexto = this.el.nativeElement.querySelector('#text-message');
+        areaDeTexto.value = '';
       },
         error: (error) =>{
           console.error('Error sending text', error);
