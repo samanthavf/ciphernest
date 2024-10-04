@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { json } from "stream/consumers";
+import { Texto } from "../model/text.model";
 
 @Injectable({
     providedIn: 'root'
@@ -19,27 +19,31 @@ import { json } from "stream/consumers";
     private enBinary:string='http://localhost:8080/api/translate/encodeBinary'
     private deBinary:string='http://localhost:8080/api/translate/decodeBinary'
 
-    sendBase(txt:string):Observable<string>{
-        const payload = { message: txt };
-        return this.http.post<string>(this.enBase, payload, { responseType: 'text' as 'json' })
+
+    sendBase(txt:Texto):Observable<any>{
+        console.log(JSON.stringify(txt));
+        return this.http.post(this.enBase, JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }
-    senDecBase(txt:string):Observable<string>{
-        return this.http.post<string>(this.deBase, txt, { responseType: 'text' as 'json', headers: {'Content-Type':'text/plain'} })
+    senDecBase(txt:Texto):Observable<any>{
+        console.log(JSON.stringify(txt));
+        return this.http.post(this.deBase,  JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }
 
-    sendMorse(txt:string):Observable<string>{
-        const payload = { message: txt };
-        return this.http.post<string>(this.enMorse, payload, { responseType: 'text' as 'json' })
+    sendMorse(txt:Texto):Observable<any>{
+        console.log(JSON.stringify(txt));
+        return this.http.post(this.enMorse, JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }
-    sendDecMorse(txt:string):Observable<string>{
-        return this.http.post<string>(this.deMorse, txt, { responseType: 'text' as 'json' , headers: {'Content-Type':'text/plain'}})
+    sendDecMorse(txt:Texto):Observable<any>{
+        console.log(JSON.stringify(txt));
+        return this.http.post(this.deMorse, JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }
 
-    sendBinary(txt:string):Observable<string>{
-        const payload = { message: txt };
-        return this.http.post<string>(this.enBinary , payload, { responseType: 'text' as 'json' })
+    sendBinary(txt:Texto):Observable<any>{
+        console.log(JSON.stringify(txt));
+       return this.http.post(this.enBinary , JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }
-    sendDecBinary(txt:string):Observable<string>{
-        return this.http.post<string>(this.deBinary, txt, { responseType: 'txt' as 'json' , headers: {'Content-Type':'text/plain'}})
+    sendDecBinary(txt:Texto):Observable<any>{
+        console.log(JSON.stringify(txt));
+        return this.http.post(this.deBinary, JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }
 }
