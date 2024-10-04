@@ -35,8 +35,10 @@ send(){
  if (this.selectedCodeType) {
   if (this.encodeButton()) {
     this.encode()
+    const areaDeTexto = this.el.nativeElement.querySelector('#text-message'); 
+    areaDeTexto.value = ''; 
   }else if (this.decodeButton()) {
-    this.decode()
+    this.decode() 
   }else{
     alert('Ops, ocorreu um erro. Nenhuma ação selecionada.')
   }
@@ -51,6 +53,7 @@ encode(){
 
   if (!this.texto.text) {
     console.error('No text to encode.');
+    return;
   }
 
   switch (this.selectedCodeType) {
@@ -58,7 +61,7 @@ encode(){
       this.servico.sendBinary(this.texto).subscribe(
         {
           next: (response) =>{
-            console.log('Binary sent successfully', response)
+            console.log('Binary sent successfully', response),
             this.texto.text = response.text;
           },
           error: (error) => {
@@ -86,7 +89,6 @@ encode(){
         error: (error) =>
         {
           console.log('Error sendingMorse', error);
-
         },})
         break;
     default:
@@ -149,7 +151,7 @@ encodeButton():boolean {
   return true;
   }
 
-  decodeButton():boolean{
+decodeButton():boolean{
     this.isDecodeClicked=true;
     this.isEncodeClicked=false;
     this.codeButtons()
