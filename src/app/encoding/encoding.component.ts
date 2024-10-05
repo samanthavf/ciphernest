@@ -20,7 +20,6 @@ constructor(private servico:encodeService, private el: ElementRef){}
 selectedCodeType:string='';
 isDecodeClicked:boolean = false;
 isEncodeClicked:boolean = false;
-
 texto = new Texto();
 
 copyText() {
@@ -32,28 +31,22 @@ copyText() {
 }
 
 send(){
-if (this.selectedCodeType) {
   switch (true) {
-    case this.encodeButton():
+    case this.isDecodeClicked:
+      console.log('decode');
+      this.decode();
+      return false;
+    case this.isEncodeClicked:
       console.log('encode');
-    this.encode()
-      break;
-  case this.decodeButton():
-    console.log('decode');
-    this.decode()
-    break;
+      this.encode();
+      return false;
     default:
       alert('Ops, ocorreu um erro. Nenhuma ação selecionada.');
-      break;
-  } 
-} else {
-  alert('Ops, ocorreu um erro. Nenhum tipo de código selecionado.');
-}
+      return false;
+  }
 }
 
 encode(){
-  this.encodeButton()
-
   if (!this.texto.text) {
     console.error('No text to encode.')
   }else{
@@ -108,8 +101,6 @@ encode(){
 }
 
 decode(){
-  this.decodeButton()
-
   if (!this.texto.text) {
     console.error('No text to decode.');
   }else{
@@ -122,6 +113,7 @@ decode(){
 
           const areaDeTexto = this.el.nativeElement.querySelector('#text-message');
           areaDeTexto.value = '';
+
       },
         error: (error) => {
         console.error('Error sending text', error);
@@ -164,33 +156,35 @@ decode(){
 }
 
 encodeButton():boolean{
-  this.isEncodeClicked=true;
+  this.isEncodeClicked= true;
   this.isDecodeClicked=false;
-  this.codeButtons()
+  this.codeButtons();
   return true;
 }
 
 decodeButton():boolean{
-    this.isDecodeClicked=true;
-    this.isEncodeClicked=false;
-    this.codeButtons()
-     return true;
+  this.isDecodeClicked=true;
+  this.isEncodeClicked=false; 
+  this.codeButtons();
+  return true;
 }
 
 codeButtons(){
-  const rolando = this.el.nativeElement.querySelector('.left-btn');
+  const left = this.el.nativeElement.querySelector('.left-btn');
+  const right = this.el.nativeElement.querySelector('.right-btn');
 
-  const rolandoDec = this.el.nativeElement.querySelector('.right-btn');
-
-  if (this.isEncodeClicked) {
-
-      rolando.style.backgroundColor = 'rgba(47, 123, 255, 0.8)';
-      rolandoDec.style.backgroundColor = '';
-
-  }else if(this.isDecodeClicked){
-
-      rolandoDec.style.backgroundColor = 'rgba(47, 123, 255, 0.8)';
-      rolando.style.backgroundColor = '';
+  switch (true) {
+    case this.isEncodeClicked:
+      left.style.backgroundColor = 'rgba(47, 123, 255, 0.8)';
+      right.style.backgroundColor = '';
+      break;
+    case this.isDecodeClicked:
+      right.style.backgroundColor = 'rgba(47, 123, 255, 0.8)';
+      left.style.backgroundColor = '';
+    break;
+    default:
+      console.log('Ops, ocorreu algum erro a selecionar o botão.');
+      break;
   }
 }
 
