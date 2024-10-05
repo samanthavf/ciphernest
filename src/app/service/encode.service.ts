@@ -24,7 +24,7 @@ import { Texto } from "../model/text.model";
         console.log(JSON.stringify(txt));
         return this.http.post(this.enBase, JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }
-    senDecBase(txt:Texto):Observable<any>{
+    sendDecBase(txt:Texto):Observable<any>{
         console.log(JSON.stringify(txt));
         return this.http.post(this.deBase,  JSON.stringify(txt), { headers: { 'Content-Type': 'application/json' }})
     }

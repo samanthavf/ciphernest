@@ -6,12 +6,12 @@ import { EncodingComponent } from './encoding/encoding.component';
   selector: 'app-root',
   standalone: true,
   imports: [
-  RouterModule,
-  RouterOutlet,
-  EncodingComponent
-  ],
+    RouterModule,
+    RouterOutlet,
+    EncodingComponent
+], 
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] 
 })
 export class AppComponent {
   title = 'MessageEncoder-front';

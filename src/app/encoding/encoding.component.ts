@@ -17,14 +17,14 @@ import { Texto } from '../model/text.model';
 export class EncodingComponent {
 constructor(private servico:encodeService, private el: ElementRef){}
 
-selectedCodeType:string = '';
+selectedCodeType:string='';
 isDecodeClicked:boolean = false;
 isEncodeClicked:boolean = false;
 
 texto = new Texto();
 
 copyText() {
-  navigator.clipboard.writeText(this.texto.text).then(() => {
+  navigator.clipboard.writeText(this.texto.textToSend).then(() => {
     alert('Texto copiado para a área de transferência!');
   }).catch(err => {
     console.error('Erro ao copiar texto: ', err);
@@ -32,28 +32,31 @@ copyText() {
 }
 
 send(){
- if (this.selectedCodeType) {
-  if (this.encodeButton()) {
+if (this.selectedCodeType) {
+  switch (true) {
+    case this.encodeButton():
+      console.log('encode');
     this.encode()
-  }else if (this.decodeButton()) {
-    this.decode() 
-  }else{
-    alert('Ops, ocorreu um erro. Nenhuma ação selecionada.')
-  }
- }else{
+      break;
+  case this.decodeButton():
+    console.log('decode');
+    this.decode()
+    break;
+    default:
+      alert('Ops, ocorreu um erro. Nenhuma ação selecionada.');
+      break;
+  } 
+} else {
   alert('Ops, ocorreu um erro. Nenhum tipo de código selecionado.');
- }
-
+}
 }
 
 encode(){
   this.encodeButton()
 
   if (!this.texto.text) {
-    console.error('No text to encode.');
-    return;
-  }
-
+    console.error('No text to encode.')
+  }else{
   switch (this.selectedCodeType) {
     case "Binary":
       this.servico.sendBinary(this.texto).subscribe(
@@ -102,15 +105,14 @@ encode(){
       console.log('Invalid code type selected');
   }
 }
+}
 
 decode(){
   this.decodeButton()
 
   if (!this.texto.text) {
     console.error('No text to decode.');
-    return;
-  }
-   
+  }else{
   switch (this.selectedCodeType) {
     case "Binary":
       this.servico.sendDecBinary(this.texto).subscribe({
@@ -127,7 +129,7 @@ decode(){
       })
       break;
     case "Base64":
-      this.servico.sendDecBinary(this.texto).subscribe({
+      this.servico.sendDecBase(this.texto).subscribe({
         next: (response) => {
           console.log('Base64 to Text successfully', response)
           this.texto.textToSend = response.text;
@@ -159,29 +161,35 @@ decode(){
       console.log('Invalid code type selected');
   }
 }
+}
 
-encodeButton():boolean {
+encodeButton():boolean{
   this.isEncodeClicked=true;
   this.isDecodeClicked=false;
   this.codeButtons()
   return true;
-  }
+}
 
 decodeButton():boolean{
     this.isDecodeClicked=true;
     this.isEncodeClicked=false;
     this.codeButtons()
-    return true;
-  }
+     return true;
+}
 
 codeButtons(){
   const rolando = this.el.nativeElement.querySelector('.left-btn');
+
   const rolandoDec = this.el.nativeElement.querySelector('.right-btn');
+
   if (this.isEncodeClicked) {
-      rolando.style.backgroundColor = 'rgba(47, 123, 255, 0.8';
+
+      rolando.style.backgroundColor = 'rgba(47, 123, 255, 0.8)';
       rolandoDec.style.backgroundColor = '';
+
   }else if(this.isDecodeClicked){
-      rolandoDec.style.backgroundColor = 'rgba(47, 123, 255, 0.8';
+
+      rolandoDec.style.backgroundColor = 'rgba(47, 123, 255, 0.8)';
       rolando.style.backgroundColor = '';
   }
 }

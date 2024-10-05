@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from "@angular/router";
-import { EncodingComponent } from "./encoding/encoding.component";
 import { NgModule} from "@angular/core";
+import { EncodingComponent } from "./encoding/encoding.component";
 
   const routes: Routes = [
-    { path: '', redirectTo: '/encoder', pathMatch: 'full' },
     { path: 'encoder', component: EncodingComponent },
-    { path: '**', redirectTo: '/encoder' },
+    { path: '', redirectTo: '/encoder', pathMatch: 'full' },
+    { path: '**', redirectTo: '/encoder' }
 ];
   
   @NgModule({
