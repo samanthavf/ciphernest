@@ -24,9 +24,9 @@ texto = new Texto();
 
 copyText() {
   navigator.clipboard.writeText(this.texto.textToSend).then(() => {
-    alert('Texto copiado para a área de transferência!');
+    alert('Copied text!');
   }).catch(err => {
-    console.error('Erro ao copiar texto: ', err);
+    console.error('Error copying text: ', err);
   });
 }
 
@@ -41,7 +41,7 @@ send(){
       this.encode();
       return false;
     default:
-      alert('Ops, ocorreu um erro. Nenhuma ação selecionada.');
+      alert('No actions selected.');
       return false;
   }
 }
@@ -62,7 +62,8 @@ encode(){
           areaDeTexto.value = ''; 
           },
           error: (error) => {
-            console.error('Error sending binary', error);
+            console.error('Error sending text', error);
+            alert('Error sending binary.');
           } 
         })
       break;
@@ -76,7 +77,8 @@ encode(){
           areaDeTexto.value = ''; 
         },
           error: (error) => {
-            console.log('Error sending Base64', error);
+            console.error('Error sending text', error);
+            alert('Error sending Base64');
             
           }     
         })
@@ -91,11 +93,13 @@ encode(){
       },
         error: (error) =>
         {
-          console.log('Error sendingMorse', error);
+          console.error('Error sending text', error);
+          alert('Error sending Morse')
         },})
         break;
     default:
       console.log('Invalid code type selected');
+      alert('Invalid code type selected');
   }
 }
 }
@@ -116,7 +120,8 @@ decode(){
 
       },
         error: (error) => {
-        console.error('Error sending text', error);
+        console.error('Error sending binary', error);
+        alert('Error sending binary.');
     }
       })
       break;
@@ -130,7 +135,8 @@ decode(){
           areaDeTexto.value = '';
         },
           error: (error) => {
-            console.error('Error sending text', error);
+            console.log('Error sending Base64', error);
+            alert('Error sending Base64');
           }
           })
     break;
@@ -145,12 +151,14 @@ decode(){
         areaDeTexto.value = '';
       },
         error: (error) =>{
-          console.error('Error sending text', error);
+          console.log('Error sending Morse', error);
+          alert('Error sending Morse')
         }
         })
   break;
     default:
       console.log('Invalid code type selected');
+      alert('Invalid code type selected');
   }
 }
 }

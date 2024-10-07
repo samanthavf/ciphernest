@@ -246,7 +246,7 @@ overflow-y: scroll;
 
 .arrow{
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 130%;
     transform: translate(-50%, -50%) rotate(-90deg); 
 }
@@ -318,7 +318,7 @@ overflow-y: scroll;
 .break{
     position: absolute;
     width: 301%;
-    height: 190px;
+    height: 100px;
     color: white;
     border: 3px solid white;
     box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
@@ -329,11 +329,11 @@ overflow-y: scroll;
 
 .pay{
     position: absolute;
-    width: 90%;
+    width: 59%;
     height: 120px;
-    background-color: #0066ff;
-    top: 50%;
-    left: 5%;
+    background-color:  rgba(145, 2, 145, 0.2);
+    top: 47%;
+    left: 18.6%;
     border: 3px solid white;
     color: white;
     box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
@@ -341,7 +341,14 @@ overflow-y: scroll;
 
 .code-icons{
     position: absolute;
-    margin-top: 8%;
+    margin-top: 2.7%;
     padding-left: 10px;
-    left: 43%;
+    left: 38.8%;
+    animation: subirDescer 1s infinite;
 }
+
+@keyframes subirDescer {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
