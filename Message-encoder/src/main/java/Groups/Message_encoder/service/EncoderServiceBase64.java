@@ -4,23 +4,25 @@ import java.util.Base64;
 
 import org.springframework.stereotype.Service;
 
-import lombok.RequiredArgsConstructor;
+import Groups.Message_encoder.model.TextModel;
 
-@RequiredArgsConstructor
+
 @Service
 public class EncoderServiceBase64 {
 
-	public String toBase64(String txt) {
+	public TextModel toBase64(TextModel txt) {
 		Base64.Encoder encoder = Base64.getEncoder();
-		String encodeText = encoder.encodeToString(txt.getBytes());
+		String encodeText = encoder.encodeToString(txt.getText().getBytes());
 		 
-		return new String(encodeText);
+		return new TextModel(encodeText);
 	}
 	
-	public String fromBase64(String txt) {
+	public TextModel fromBase64(TextModel txt) {
 		if (txt != null) {
-			byte[] decodedBytes = Base64.getDecoder().decode(txt);
-	        return new String(decodedBytes);
+			byte[] decodedBytes = Base64.getDecoder().decode(txt.getText());
+			String decodedString = new String(decodedBytes);
+			
+			return new TextModel(decodedString);
 		}else {
 			throw new IllegalArgumentException("Erro ao decodificar a string Base64");
 		}
