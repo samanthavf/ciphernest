@@ -8,7 +8,7 @@ import { Texto } from "../model/text.model";
   })
 
   export class encodeService{
-    constructor( private http:HttpClient) {}
+    constructor(private http: HttpClient) {}
 
     private enBase:string='http://localhost:8080/api/translate/encodeBase64'
     private deBase:string='http://localhost:8080/api/translate/decodeBase64'
