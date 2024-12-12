@@ -10,14 +10,14 @@ import { Texto } from "../model/text.model";
   export class encodeService{
     constructor(private http: HttpClient) {}
 
-    private enBase:string='http://apicipher.shop:8080/api/translate/encodeBase64'
-    private deBase:string='http://apicipher.shop:8080/api/translate/decodeBase64'
+    private enBase:string='https://apicipher.shop:443/api/translate/encodeBase64'
+    private deBase:string='https://apicipher.shop:443/api/translate/decodeBase64'
 
-    private enMorse:string='http://apicipher.shop:8080/api/translate/encodeMorse'
-    private deMorse:string='http://apicipher.shop:8080/api/translate/decodeMorse'
+    private enMorse:string='https://apicipher.shop:443/api/translate/encodeMorse'
+    private deMorse:string='https://apicipher.shop:443/api/translate/decodeMorse'
 
-    private enBinary:string='http://apicipher.shop:8080/api/translate/encodeBinary'
-    private deBinary:string='http://apicipher.shop:8080/api/translate/decodeBinary'
+    private enBinary:string='https://apicipher.shop:443/api/translate/encodeBinary'
+    private deBinary:string='https://apicipher.shop:443/api/translate/decodeBinary'
 
 
     sendBase(txt:Texto):Observable<any>{
