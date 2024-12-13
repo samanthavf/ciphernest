@@ -160,7 +160,7 @@ overflow-x: hidden;
     width: 553px;
     height: 68.9vh;
     bottom: 1.5%;
-    left: 169.5%;
+    left: 168%;
     border-radius: 10px;
     background-color: #1c1c1c;
 }
@@ -249,7 +249,7 @@ overflow-x: hidden;
 .arrow{
     position: absolute;
     top: 45%;
-    left: 130%;
+    left: 125%;
     transform: translate(-50%, -50%) rotate(-90deg); 
 }
 
