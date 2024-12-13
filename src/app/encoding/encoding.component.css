@@ -160,7 +160,7 @@ overflow-x: hidden;
     width: 553px;
     height: 68.9vh;
     bottom: 1.5%;
-    left: 165%;
+    left: 160%;
     border-radius: 10px;
     background-color: #1c1c1c;
 }
@@ -319,7 +319,7 @@ overflow-x: hidden;
 
 .break{
     position: absolute;
-    width: 100%;
+    width: 250%;
     height: 100px;
     color: white;
     border: 3px solid white;
