@@ -168,7 +168,7 @@ overflow-x: hidden;
 .decode-border{
     position: absolute;
     background-color: #1c1c1c;
-    left: 155%;
+    left: 151%;
     bottom: 3%;
     height: 70vh;
     border-radius: 10px;
@@ -319,7 +319,7 @@ overflow-x: hidden;
 
 .break{
     position: absolute;
-    width: 275%;
+    width: 270%;
     height: 100px;
     color: white;
     border: 3px solid white;
