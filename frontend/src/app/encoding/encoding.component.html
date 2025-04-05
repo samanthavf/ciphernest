@@ -1,0 +1,58 @@
+<div class="body">
+
+    <div class="head">
+        <h1>CipherNest</h1>
+        <h2>Welcome to CipherNest!</h2>
+        <h3 style="text-indent: 3px;">Transform your messages with ease! CipherNest is your one-stop solution 
+            for encoding and decoding texts in Base64, binary, and Morse code. With an intuitive interface and 
+            advanced features, you can secure your communications, explore new formats, and simplify 
+            information sharing. Try it now and discover how easy it is to keep your messages secure and 
+            accessible!
+        </h3>
+
+    </div>
+
+    <div class="pay">
+        <div class="code-icons">
+            <img src="assets/binario.png" alt="bin" width="60px" height="60px">
+            <img src="assets/morse.png" alt="morse" width="60px" height="60px">
+            <img src="assets/base64.png" alt="base" width="60px" height="60px">
+        </div>
+    </div>
+
+    <div class="encoding-border"></div>
+<div class="container-encoding">
+    <div class="container inputs">
+        <div class="connected-buttons">
+            <button class="left-btn" [class.active]="isEncodeClicked" (click)="encodeButton()" >encode</button>
+            <button class="right-btn" [class.active]="isDecodeClicked" (click)="decodeButton()">decode</button>
+        </div>
+      <select name="select" id="select-code" [(ngModel)]="selectedCodeType" required>
+      <option value="">Select</option>
+      <option value="Binary">Binary</option>
+      <option value="Base64">Base64</option>
+      <option value="Morse" >Morse</option>
+        </select>
+        <textarea name="text" id="text-message" cols="30" rows="10" [(ngModel)]="texto.text" placeholder="Message" required></textarea>
+        <button type="submit" id="submit-button" (click)="send()">submit</button>
+
+
+        <div class="arrow">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+
+        <div class="decode-border"></div>
+        <div class="container-decode">
+            <textarea id="decode-text" readonly cols="30" rows="10">{{texto.textToSend}}</textarea>
+            <button (click)="copyText()" id="copy-decode">Copy</button>
+        </div>
+    </div>
+
+    <div class="break"></div>
+
+</div>
+</div>
