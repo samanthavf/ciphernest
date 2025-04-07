@@ -43,26 +43,35 @@ O **CipherNest** é uma ferramenta educacional e prática voltada para entusiast
 
 ## 📦 Instalação
 
+
 ### 🔧 Backend (Spring Boot)
 
-```bash
 # 1. Clone o projeto
+```bash
 git clone https://github.com/seu-usuario/CipherNest.git
+```
 
 # 2. Acesse a pasta do backend
+```bash
 cd CipherNest/backend
-
+```
 # 3. Compile e execute o projeto
+```bash
 ./mvnw spring-boot:run
 ```
 
-🖥️ Frontend (Angular)
-```bash
+
+### 🖥️ Frontend (Angular)
+
 # 1. Acesse a pasta do frontend
+```bash
 cd CipherNest/frontend
-
+```
 # 2. Instale as dependências
+```bash
 npm install
-
+```
 # 3. Rode o servidor de desenvolvimento
+```bash
 ng serve
+```
